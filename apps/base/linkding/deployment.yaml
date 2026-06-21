@@ -25,8 +25,8 @@ spec:
 
           envFrom:
             - secretRef:
-                name: linkding-container-env
-
+                name: linkding-creds
+              
           securityContext:
             allowPrivilegeEscalation: false
 
@@ -34,7 +34,7 @@ spec:
             - name: linkding-data
               mountPath: /etc/linkding/data
             - name: secrets-store-inline
-              mountPath: /mnt/secrect-store
+              mountPath: /mnt/secrets-store
 
       volumes:
         - name: linkding-data
@@ -45,4 +45,6 @@ spec:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: azure-kv-homelab-test
+              secretProviderClass: azure-kv-secrets
+            nodePublishSecretRef:
+              name: secrets-store-creds
