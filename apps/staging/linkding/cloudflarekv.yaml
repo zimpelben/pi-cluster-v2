@@ -50,6 +50,8 @@ spec:
           readOnly: true
           volumeAttributes: 
             secretProviderClass: azure-kv-tunnel-secrets
+          nodePublishSecretRef:
+            name: secrets-store-creds
 
       # Create a config.yaml file from the ConfigMap below.
       - name: config
