@@ -26,6 +26,8 @@ spec:
           envFrom:
             - secretRef:
                 name: linkding-creds
+            - configMapRef:
+                name: linkding-configmap
               
           securityContext:
             allowPrivilegeEscalation: false
@@ -40,7 +42,7 @@ spec:
         - name: linkding-data
           persistentVolumeClaim:
             claimName: linkding-data-pvc
-        - name: secrets-store-inline
+        - name: secrets-store-creds
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
