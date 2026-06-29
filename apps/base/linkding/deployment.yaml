@@ -35,7 +35,7 @@ spec:
           volumeMounts:
             - name: linkding-data
               mountPath: /etc/linkding/data
-            - name: secrets-store-inline
+            - name: secrets-store-creds
               mountPath: /mnt/secrets-store
 
       volumes:
