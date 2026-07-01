@@ -1,0 +1,18 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: linkding-db
+  namespace: linkding
+  labels:
+    app: linkding-db
+spec:
+  instances: 3
+  bootstrap:
+    initdb:
+      database: linkding
+      owner: linkding
+      secret:
+        name: linkding-db-creds
+
+  storage:
+    size: 1Gi
