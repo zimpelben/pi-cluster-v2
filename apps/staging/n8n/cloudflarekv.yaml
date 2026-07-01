@@ -45,13 +45,8 @@ spec:
           readOnly: true
       volumes:
       - name: creds
-        csi:
-          driver: secrets-store.csi.k8s.io
-          readOnly: true
-          volumeAttributes: 
-            secretProviderClass: azure-n8n-tunnel-secrets
-          nodePublishSecretRef:
-            name: secrets-store-creds
+        secret:
+          secretName: n8n-tunnel-creds
 
       # Create a config.yaml file from the ConfigMap below.
       - name: config
