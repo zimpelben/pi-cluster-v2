@@ -39,10 +39,26 @@ spec:
           volumeMounts:
             - mountPath: /home/node/.n8n
               name: n8n-data
+            - name: secrets-store-creds
+              mountPath: /mnt/secrets-store
 
       restartPolicy: Always
+      
+      dnsConfig:
+        options:
+          - name: single-request-reopen
+          - name: ndots
+            value: "2"
 
       volumes:
         - name: n8n-data
           persistentVolumeClaim:
             claimName: n8n-data
+        - name: secrets-store-creds
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: azure-n8n-tunnel-secrets 
+            nodePublishSecretRef:
+              name: secrets-store-creds
