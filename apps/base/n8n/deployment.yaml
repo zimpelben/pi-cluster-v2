@@ -61,6 +61,6 @@ spec:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: azure-n8n-tunnel-secrets 
+              secretProviderClass: azure-n8n-secrets 
             nodePublishSecretRef:
               name: secrets-store-creds
