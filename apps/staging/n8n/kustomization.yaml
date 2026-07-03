@@ -4,4 +4,3 @@ namespace: n8n
 resources:
   - ../../base/n8n
   - cloudflarekv.yaml
-  - secrets.yaml
